@@ -34,7 +34,9 @@ adalah kombinasi paling aman. Menyimpang dari situ harus punya alasan.
 > menyuruh model membayangkan wajah dari sudut yang tidak pernah difoto. Kemiripan
 > hampir pasti berkurang. Pada EDIT, gunakan kode hanya untuk **mempertahankan**
 > sudut asli (`Maintain the original eye-level framing`) atau menggeser sedikit.
-> Kebebasan penuh memakai 50 kode ini ada di mode GENERATE.
+> Kebebasan penuh memakai 50 kode ini ada di mode GENERATE. Kalau user memang
+> butuh sudut baru dari foto yang ada, itu tugas tersendiri — buka
+> `angle-change.md`, jangan hanya menempelkan kode dari tabel di bawah.
 
 ---
 

@@ -108,6 +108,22 @@ for p in data['presets']:
     p['group'] = gmap.get(p['n'], '').replace('Turunan: ', '').strip()
     if p['group'].startswith('Enam prompt'): p['group'] = 'Prompt inti'
 
+# ---- angle change prompts --------------------------------------------
+ac = (R/'angle-change.md').read_text()
+data['angle'] = []
+for m in re.finditer(r'## (Prompt [A-Z] — .+?)\n(.*?)(?=\n## |\Z)', ac, re.S):
+    title = m.group(1).strip()
+    body = m.group(2)
+    desc = ''
+    for line in body.split('\n'):
+        if line.startswith('>'): break
+        if line.strip(): desc += line.strip() + ' '
+    quote = ' '.join(l.lstrip('> ').strip() for l in body.split('\n') if l.startswith('>'))
+    if not quote: continue
+    data['angle'].append({'code': title.replace('Prompt ', '').strip(),
+                          'group': 'Ubah sudut', 'desc': re.sub(r'\*\*|\*', '', desc).strip(),
+                          'prompt': quote.strip(), 'note': ''})
+
 # ---- identity lock levels -------------------------------------------
 il = (R/'identity-lock.md').read_text()
 data['locks'] = []

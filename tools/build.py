@@ -192,6 +192,7 @@ const DATA = __CORPUS__;
 const BANS = DATA.bans.map((b,i)=>({group:b.group,code:'Larangan '+(i+1),prompt:b.prompt,note:''}));
 const CATS = [
   {id:'preset', label:'Preset', items:DATA.presets.map(p=>({...p,code:p.name}))},
+  {id:'angle',  label:'Ubah sudut', items:DATA.angle},
   {id:'lock',   label:'Identity lock', items:DATA.locks.concat(BANS)},
   {id:'camera', label:'Kamera', items:DATA.camera},
   {id:'light',  label:'Cahaya', items:DATA.lighting},
@@ -201,6 +202,7 @@ const total = CATS.reduce((a,c)=>a+c.items.length,0);
 document.getElementById('tally').innerHTML =
   `<span><b>${DATA.presets.length}</b> preset</span><span><b>${DATA.camera.length}</b> kode kamera</span>`+
   `<span><b>${DATA.lighting.length}</b> cahaya</span><span><b>${DATA.effects.length}</b> efek</span>`+
+  `<span><b>${DATA.angle.length}</b> ubah sudut</span>`+
   `<span><b>${total}</b> total</span>`;
 
 /* ---------- clipboard ---------- */
@@ -304,7 +306,7 @@ if(!['all',...CATS.map(c=>c.id)].includes(active)) active = 'all';
 function esc(s){ return s.replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 function frame(it, cat){
   const d = document.createElement('div');
-  d.className = 'fr' + (cat === 'preset' ? ' wide' : '');
+  d.className = 'fr' + (cat === 'preset' || cat === 'angle' ? ' wide' : '');
   const n = it.n != null ? String(it.n).padStart(2,'0') : '';
   d.innerHTML =
     `<div class="rb">${n ? esc(n) : ''}<span class="sp"></span><span class="sp"></span></div>`+
@@ -337,7 +339,7 @@ function render(){
       s.innerHTML = `<div class="sect-hd"><h2>${esc(g || cat.label)}</h2>`+
                     `<span class="c">${cat.label} &middot; ${items.length}</span></div>`;
       const sh = document.createElement('div');
-      sh.className = 'sheet' + (cat.id === 'preset' ? ' pre' : '');
+      sh.className = 'sheet' + (cat.id === 'preset' || cat.id === 'angle' ? ' pre' : '');
       items.forEach(it=>sh.appendChild(frame(it, cat.id)));
       s.appendChild(sh); sheets.appendChild(s);
     });

@@ -35,6 +35,11 @@ prompt edit foto orang tanpa kalimat kedua.
 - **GENERATE** — bikin gambar dari nol, tidak ada orang nyata yang dijaga.
   Identity lock tidak relevan; fokus ke deskripsi subjek, angle, lighting, gaya.
 
+Ada satu kasus di antara keduanya yang butuh penanganan tersendiri: **mengubah
+sudut kamera pada foto yang sudah ada.** Ini EDIT, tapi memaksa model mengarang
+permukaan yang tidak pernah terekam, sehingga identity lock saja tidak cukup.
+Langsung buka `references/angle-change.md` begitu permintaannya menyentuh ini.
+
 **2. Kalau ada fotonya, lihat dulu.** Kalau user melampirkan foto, perhatikan
 masalah nyatanya sebelum menulis apa pun — backlight parah, warna kulit menguning
 karena lampu ruangan, background berantakan, noise tinggi, blur gerakan, atau
@@ -87,6 +92,7 @@ Buka file yang relevan saja — jangan baca semuanya sekaligus.
 | `references/identity-lock.md` | Kalimat pengunci identitas, daftar larangan, kapan lock dilonggarkan | **Setiap tugas EDIT foto orang** |
 | `references/photo-transform.md` | 6 prompt inti (DSLR, editorial, golden hour, headshot, koreksi cahaya, background) + 18 preset turunan | User minta transformasi foto jadi gaya tertentu |
 | `references/camera-codes.md` | 50 kode sudut & framing, dikelompokkan 5 kategori, plus terjemahan tiap kode jadi kalimat penuh | Butuh sudut, jarak, atau perspektif tertentu |
+| `references/angle-change.md` | Cara mengubah sudut kamera pada foto yang sudah ada tanpa kehilangan kemiripan: turntable sheet, fusi multi-referensi, rotasi bertahap, dan batas nyatanya | **User minta ubah angle tapi subjek harus tetap sama** |
 | `references/lighting.md` | Pola cahaya potret, arah, kualitas, setup studio, cahaya alami, cahaya berwarna, mood sinematik | Masalah atau keinginannya soal cahaya |
 | `references/visual-effects.md` | Optik lensa, bokeh, flare, motion, tekstur film, color grading, film stock, atmosfer | User mau "rasa" atau gaya visual tertentu |
 | `references/platform-syntax.md` | Perbedaan perilaku Nano Banana vs GPT Image, panjang prompt ideal, cara iterasi, kenapa sebuah prompt gagal | **Sebelum menyerahkan prompt final** |
